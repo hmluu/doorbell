@@ -27,7 +27,7 @@ board.on("ready", function() {
   
   button.on("release", function() {
     stillCamera.takeImage().then(image => {
-      fs.writeFileSync("still-image.jpg", image); 
+      fs.writeFileSync("still-image.jpg", image, {flag:'w'}); 
     }); 
     console.log( "Button released" );
   });
