@@ -1,5 +1,6 @@
 const { StillCamera } = require("pi-camera-connect");
 const stillCamera = new StillCamera();
+const fs = require("fs");
 
 
 const raspi = require('raspi-io');
