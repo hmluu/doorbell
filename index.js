@@ -1,11 +1,30 @@
+// const { StillCamera } = require("pi-camera-connect");
+// const stillCamera = new StillCamera();
+
+// stillCamera.takeImage().then(image => {
+//   fs.writeFileSync("still-image.jpg", image); 
+// }); 
+
 const raspi = require('raspi-io');
 const five = require('johnny-five');
 const board = new five.Board({
   io: new raspi()
 });
 
-board.on('ready', () => {
-  // Create an Led on pin 7 on header P1 (GPIO4) and strobe it on/off
-  const led = new five.Led('P1-7');
-  led.strobe(500);
+board.on("ready", function() {
+
+  // Create a new `button` hardware instance.
+  var button = new five.Button("GPIO4");
+
+  button.on("hold", function() {
+    console.log( "Button held" );
+  });
+
+  button.on("press", function() {
+    console.log( "Button pressed" );
+  });
+
+  button.on("release", function() {
+    console.log( "Button released" );
+  });
 });
