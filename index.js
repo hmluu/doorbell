@@ -28,6 +28,10 @@ board.on("ready", function() {
   });
   
   button.on("release", function() {
+    const stillCamera = new StillCamera({
+      width: 864,
+      height: 648
+    });
     stillCamera.takeImage().then(image => {
       fs.writeFileSync('event.jpg', image, {flag:'w'}); 
 
