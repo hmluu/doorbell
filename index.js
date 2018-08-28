@@ -1,6 +1,6 @@
-const { StillCamera } = require("pi-camera-connect");
+const { StillCamera } = require('pi-camera-connect');
 const stillCamera = new StillCamera();
-const fs = require("fs");
+const fs = require('fs');
 const fetch = require('node-fetch');
 
 
@@ -29,9 +29,10 @@ board.on("ready", function() {
   
   button.on("release", function() {
     stillCamera.takeImage().then(image => {
-      // fs.writeFileSync("still-image.jpg", image, {flag:'w'}); 
+      fs.writeFileSync('event.jpg', image, {flag:'w'}); 
+
     const form = new FormData();
-    form.append('event', image);
+    form.append('event', fs.createReadStream('event.jpg'));
     fetch('http://172.20.10.6:5000/api/v1/events', { method: 'POST', body: form, headers: form.getHeaders() })
         .then(res => res.json())
         .then(json => console.log(json));
