@@ -14,7 +14,7 @@ const board = new five.Board({
 board.on("ready", function() {
 
   // Create a new `button` hardware instance.
-  var button = new five.Button("GPIO4");
+  var button = new five.Button("P1-7");
 
   button.on("hold", function() {
     console.log( "Button held" );
