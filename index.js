@@ -16,7 +16,7 @@ board.on("ready", function() {
   // Create a new `button` hardware instance.
   var button = new five.Button({
     pin: 12,
-    isPullup: true
+    isPulldown: true
   });
 
   button.on("hold", function() {
