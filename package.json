@@ -13,6 +13,7 @@
     "form-data": "^2.3.2",
     "johnny-five": "^1.0.0",
     "node-fetch": "^2.2.0",
+    "onoff": "^3.2.1",
     "pi-camera-connect": "^0.2.0",
     "raspi-io": "^9.0.0"
   }
