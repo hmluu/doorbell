@@ -14,11 +14,6 @@ button.watch((err, value) => {
   if(err) {
     throw err;
   }
-  button.writeSync(value);
-});
-
-process.on('SIGINT', () => {
-  button.unexport();
   const stillCamera = new StillCamera({
     width: 864,
     height: 648
@@ -35,4 +30,8 @@ process.on('SIGINT', () => {
         console.log(error.message);
       })
   console.log( "Button released" );
+});
+
+process.on('SIGINT', () => {
+  button.unexport();
 });
