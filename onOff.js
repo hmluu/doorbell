@@ -30,7 +30,7 @@ button.watch((err, value) => {
 
       const form = new FormData();
       form.append('event', fs.createReadStream('event.jpg'));
-      fetch('http://172.20.10.6:5000/api/v1/events', {
+      fetch('http://172.20.10.3:5000/api/v1/events', {
           method: 'POST',
           body: form,
           headers: form.getHeaders()
