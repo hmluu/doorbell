@@ -31,14 +31,23 @@ button.watch((err, value) => {
 
       const form = new FormData();
       form.append('event', fs.createReadStream('event.jpg'));
-      fetch('http://172.20.10.3:5000/api/v1/events', {
+      fetch('http://172.20.10.6:5000/api/v1/events', {
           method: 'POST',
           body: form,
           headers: form.getHeaders()
         })
         .then(res => res.json())
-        .then(json => {
-          console.log(json);
+        .then(result => {
+          console.log(result);
+          if(result.isFriends) {
+            player.play('correct.mp3', function(err){
+              if (err) console.log("Error Playing Sound", err);
+            })
+          } else {
+            player.play('wrong.mp3', function(err){
+              if (err) console.log("Error Playing Sound", err);
+            })
+          }
           isTakingPicture = false;
         }).catch(error => {
           console.log(error.message);
