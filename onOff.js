@@ -9,6 +9,7 @@ const raspi = require('raspi-io');
 const FormData = require('form-data');
 
 const Gpio = require('onoff').Gpio;
+const player = require('play-sound')(opts = {})
 
 let button = new Gpio(4, 'in', 'both');
 let isTakingPicture = false;
@@ -45,6 +46,9 @@ button.watch((err, value) => {
         })
 
     });
+    player.play('doorbell.mp3', function(err){
+      if (err) console.log("Error Playing Sound", err);
+    })
     console.log("Button released");
   } else {
     console.log("processing image please wait");
